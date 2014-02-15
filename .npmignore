@@ -1,0 +1,10 @@
+.git/
+
+# for WebStorm
+.idea/
+
+# for npm
+node_modules/
+
+# codes
+test/
