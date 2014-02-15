@@ -2,6 +2,7 @@ import TypeScript = require("./typescript/tss");
 
 import f = require("./src/formatter");
 import s = require("./src/syntaxTree");
+import c = require("./src/compiler");
 
 (()=> {
 	var formatCodeOptions = f.createDefaultFormatCodeOptions();
@@ -34,4 +35,27 @@ import s = require("./src/syntaxTree");
 		}
 	};
 	console.log(JSON.stringify(ast, replacer, 2));
+})();
+
+(()=> {
+	var content = "class Sample{\n                   hello     (word ='world'){return       'Hello, '+word;}\n}";
+	var settings = c.createCompilationSettings();
+	settings.codeGenTarget = TypeScript.LanguageVersion.EcmaScript5;
+	settings.moduleGenTarget = TypeScript.ModuleGenTarget.Synchronous;
+
+	var iter = c.compileWithContent(content, settings);
+	while (iter.moveNext()) {
+		var result = iter.current();
+		result.diagnostics.forEach(d=> {
+			var info = d.info();
+			if (info.category === TypeScript.DiagnosticCategory.Error) {
+				console.error(d.message());
+			} else {
+				console.log(d.message());
+			}
+		});
+		result.outputFiles.forEach(outFile=> {
+			console.log(outFile.name, outFile.text);
+		});
+	}
 })();
