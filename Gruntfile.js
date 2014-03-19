@@ -77,6 +77,19 @@ module.exports = function (grunt) {
 				src: ['src/**/*.ts', 'test/**/*.ts']
 			}
 		},
+		espower: {
+			test: {
+				files: [
+					{
+						expand: true,        // Enable dynamic expansion.
+						cwd: 'tests/',        // Src matches are relative to this path.
+						src: ['**/*.js'],    // Actual pattern(s) to match.
+						dest: 'testEspowered/',  // Destination path prefix.
+						ext: '.js'           // Dest filepaths will have this extension.
+					}
+				]
+			}
+		},
 		clean: {
 			clientScript: {
 				src: [
@@ -91,11 +104,10 @@ module.exports = function (grunt) {
 		mochaTest: {
 			test: {
 				options: {
-					reporter: 'spec',
-					require: 'expectations'
+					ui: 'bdd'
 				},
 				src: [
-					'tests/mainTest.js'
+					'testEspowered/mainTest.js'
 				]
 			}
 		}
@@ -104,6 +116,10 @@ module.exports = function (grunt) {
 	grunt.registerTask(
 		'default',
 		['clean:clientScript', 'ts:clientMain', 'tslint']);
+
+	grunt.registerTask(
+		'test',
+		['clean:clientScript', 'ts', 'tslint', 'espower', 'mochaTest']);
 
 	require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
 };

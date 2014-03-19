@@ -3,6 +3,9 @@ node_modules/
 
 typescript/tss.js
 
-/*.js
 !Gruntfile.js
+/*.js
 src/**/*.js
+
+tests/*.js
+testEspowered/
