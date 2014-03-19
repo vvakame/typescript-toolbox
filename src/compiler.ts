@@ -8,9 +8,9 @@ export function createImmutableCompilationSettings(settings = createCompilationS
 	return TypeScript.ImmutableCompilationSettings.fromCompilationSettings(settings);
 }
 
-export function compileWithContent(content:string, compilationSettings:TypeScript.CompilationSettings);
-export function compileWithContent(content:string, compilationSettings:TypeScript.ImmutableCompilationSettings);
-export function compileWithContent(content:string, compilationSettings:any) {
+export function compileWithContent(content:string, compilationSettings:TypeScript.CompilationSettings):TypeScript.Iterator<TypeScript.CompileResult>;
+export function compileWithContent(content:string, compilationSettings:TypeScript.ImmutableCompilationSettings):TypeScript.Iterator<TypeScript.CompileResult>;
+export function compileWithContent(content:string, compilationSettings:any):TypeScript.Iterator<TypeScript.CompileResult> {
 	var immutableCompilationSettings:TypeScript.ImmutableCompilationSettings;
 	if (compilationSettings instanceof TypeScript.ImmutableCompilationSettings) {
 		immutableCompilationSettings = compilationSettings;
