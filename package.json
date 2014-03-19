@@ -1,0 +1,25 @@
+{
+	"name": "typescript-toolbox",
+	"version": "0.0.1",
+	"description": "",
+	"main": "index.js",
+	"directories": {
+		"test": "tests"
+	},
+	"scripts": {
+		"test": "grunt test"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git://github.com/vvakame/typescript-toolbox.git"
+	},
+	"keywords": [
+		"typescript"
+	],
+	"author": "vvakame",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/vvakame/typescript-toolbox/issues"
+	},
+	"homepage": "https://github.com/vvakame/typescript-toolbox"
+}
