@@ -1,0 +1,5 @@
+{
+    "error": [
+		"error TS2000: Duplicate identifier 'test'."
+	]
+}

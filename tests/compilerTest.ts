@@ -17,12 +17,12 @@ export function exec() {
 				.forEach(fileName => {
 					it(fileName, ()=> {
 						var name = fileName.match(/(.*)\.ts/)[1];
-						var content = fs.readFileSync(fixtureDir + "/" + fileName, "utf-8");
-						var expected = fs.readFileSync(expectedDir + "/" + name + ".js", "utf-8");
 						var opts:any = {};
 						if (fs.existsSync(fixtureDir + "/" + name + ".json")) {
 							opts = JSON.parse(fs.readFileSync(fixtureDir + "/" + name + ".json", "utf-8"));
 						}
+
+						var content = fs.readFileSync(fixtureDir + "/" + fileName, "utf-8");
 
 						var iter:TypeScript.Iterator<TypeScript.CompileResult>;
 						if (opts.mutable) {
@@ -43,12 +43,23 @@ export function exec() {
 
 						var result = iter.current();
 
+						if (opts.error) {
+							var errors = result.diagnostics.filter(d=>d.info().category === TypeScript.DiagnosticCategory.Error);
+							assert(opts.error.length === errors.length);
+							opts.error.forEach((expectedError, i) => {
+								assert(expectedError === errors[i].message());
+							});
+							return;
+						}
+
 						result.diagnostics.forEach(d=> {
 							var info = d.info();
 							assert(d.info().category !== TypeScript.DiagnosticCategory.Error, d.message());
 						});
 						assert(result.outputFiles.length === 1);
+
 						var outFile = result.outputFiles[0];
+						var expected = fs.readFileSync(expectedDir + "/" + name + ".js", "utf-8");
 						assert(expected === outFile.text);
 					});
 				});
