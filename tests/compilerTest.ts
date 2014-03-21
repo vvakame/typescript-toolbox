@@ -18,9 +18,21 @@ export function exec() {
 					var name = fileName.match(/(.*)\.ts/)[1];
 					var content = fs.readFileSync(fixtureDir + "/" + fileName, "utf-8");
 					var expected = fs.readFileSync(expectedDir + "/" + name + ".js", "utf-8");
+					var opts:any = {};
+					if (fs.existsSync(fixtureDir + "/" + name + ".json")) {
+						opts = JSON.parse(fs.readFileSync(fixtureDir + "/" + name + ".json", "utf-8"));
+					}
 
-					var mutableSettings = c.createCompilationSettings();
-					var iter = c.compileWithContent(content, mutableSettings);
+					var iter:TypeScript.Iterator<TypeScript.CompileResult>;
+					if (opts.mutable) {
+						var mutableSettings = c.createCompilationSettings();
+						if (opts.target === "es5") {
+							mutableSettings.codeGenTarget = TypeScript.LanguageVersion.EcmaScript5;
+						}
+						iter = c.compileWithContent(content, mutableSettings);
+					} else {
+						iter = c.compileWithContent(content, c.createImmutableCompilationSettings());
+					}
 					assert.ok(iter.moveNext());
 
 					var result = iter.current();
