@@ -32,6 +32,8 @@ export function exec() {
 							}
 							if (opts.module === "amd") {
 								mutableSettings.moduleGenTarget = TypeScript.ModuleGenTarget.Asynchronous;
+							} else if (opts.module === "commonjs") {
+								mutableSettings.moduleGenTarget = TypeScript.ModuleGenTarget.Synchronous;
 							}
 							iter = c.compileWithContent(content, mutableSettings);
 						} else {
