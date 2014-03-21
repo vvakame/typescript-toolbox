@@ -9,30 +9,30 @@ import c = require("../src/compiler");
 
 export function exec() {
 	describe("compiler test", () => {
-		fs.readdirSync("./tests/fixture").forEach(fileName => {
-			it(fileName, ()=> {
-				var content = fs.readFileSync(fileName, "utf-8");
+		var fixtureDir = "./tests/fixture";
+		var expectedDir = "./tests/expected";
+		fs.readdirSync(fixtureDir)
+			.filter(fileName => /\.ts$/.test(fileName))
+			.forEach(fileName => {
+				it(fileName, ()=> {
+					var name = fileName.match(/(.*)\.ts/)[1];
+					var content = fs.readFileSync(fixtureDir + "/" + fileName, "utf-8");
+					var expected = fs.readFileSync(expectedDir + "/" + name + ".js", "utf-8");
 
-				var mutableSettings = c.createCompilationSettings();
-				var immutableSettings = c.createImmutableCompilationSettings();
+					var mutableSettings = c.createCompilationSettings();
+					var iter = c.compileWithContent(content, mutableSettings);
+					assert.ok(iter.moveNext());
 
-				var iter = c.compileWithContent(content, immutableSettings);
-				while (iter.moveNext()) {
 					var result = iter.current();
+
 					result.diagnostics.forEach(d=> {
 						var info = d.info();
-						if (info.category === TypeScript.DiagnosticCategory.Error) {
-							console.error(d.message());
-						} else {
-							console.log(d.message());
-						}
+						assert(d.info().category !== TypeScript.DiagnosticCategory.Error, d.message());
 					});
-					result.outputFiles.forEach(outFile=> {
-						console.log(outFile.name, outFile.text);
-					});
-				}
-				throw new Error();
+					assert(result.outputFiles.length === 1);
+					var outFile = result.outputFiles[0];
+					assert(expected === outFile.text);
+				});
 			});
-		});
 	});
 }
