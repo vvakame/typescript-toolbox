@@ -103,4 +103,8 @@ export class LanguageServiceHostImpl implements TypeScript.Services.ILanguageSer
 	addFile(file:FileInfo) {
 		this.fileInfos[file.fileName] = file;
 	}
+
+	setCompilationSettings(compilationSettings:TypeScript.CompilationSettings):void {
+		this.compilationSettings = compilationSettings;
+	}
 }

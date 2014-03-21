@@ -5,3 +5,6 @@ import assert = require("power-assert");
 
 import compilerTest = require("./compilerTest");
 compilerTest.exec();
+
+import syntaxTreeTest = require("./syntaxTreeTest");
+syntaxTreeTest.exec();

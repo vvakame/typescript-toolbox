@@ -6,6 +6,7 @@ import assert = require('power-assert');
 // collision between node.d.ts to typescriptServices
 var fs = require("fs");
 import c = require("../src/compiler");
+import helper = require("./testHelper");
 
 export function exec() {
 	describe("compiler test", () => {
@@ -17,28 +18,12 @@ export function exec() {
 				.forEach(fileName => {
 					it(fileName, ()=> {
 						var name = fileName.match(/(.*)\.ts/)[1];
-						var opts:any = {};
-						if (fs.existsSync(fixtureDir + "/" + name + ".json")) {
-							opts = JSON.parse(fs.readFileSync(fixtureDir + "/" + name + ".json", "utf-8"));
-						}
-
 						var content = fs.readFileSync(fixtureDir + "/" + fileName, "utf-8");
 
-						var iter:TypeScript.Iterator<TypeScript.CompileResult>;
-						if (opts.mutable) {
-							var mutableSettings = c.createCompilationSettings();
-							if (opts.target === "es5") {
-								mutableSettings.codeGenTarget = TypeScript.LanguageVersion.EcmaScript5;
-							}
-							if (opts.module === "amd") {
-								mutableSettings.moduleGenTarget = TypeScript.ModuleGenTarget.Asynchronous;
-							} else if (opts.module === "commonjs") {
-								mutableSettings.moduleGenTarget = TypeScript.ModuleGenTarget.Synchronous;
-							}
-							iter = c.compileWithContent(content, mutableSettings);
-						} else {
-							iter = c.compileWithContent(content, c.createImmutableCompilationSettings());
-						}
+						var opts = helper.readSettingJson(fixtureDir + "/" + name + ".json");
+						var mutableSettings = helper.optsToCompilationSettings(opts);
+
+						var iter = c.compileWithContent(content, mutableSettings);
 						assert.ok(iter.moveNext());
 
 						var result = iter.current();

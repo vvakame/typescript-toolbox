@@ -6,7 +6,7 @@ export function createDefaultFormatCodeOptions() {
 	return new TypeScript.Services.FormatCodeOptions();
 }
 
-export function getSyntaxTreeByContent(content:string) {
+export function getSyntaxTreeByContent(content:string, compilationSettings?:TypeScript.CompilationSettings):TypeScript.SyntaxTree {
 	var languageServiceHost = new lsh.LanguageServiceHostImpl();
 	var filePath = "tmp.ts";
 
@@ -17,18 +17,16 @@ export function getSyntaxTreeByContent(content:string) {
 		byteOrderMark: TypeScript.ByteOrderMark.None,
 		snapshot: TypeScript.ScriptSnapshot.fromString(content)
 	});
+	if (compilationSettings) {
+		languageServiceHost.setCompilationSettings(compilationSettings);
+	}
 	var languageService = new TypeScript.Services.LanguageService(languageServiceHost);
 	return languageService.getSyntaxTree(filePath);
 }
 
-export function getAstByContent(content: string) {
-	var syntaxTree = getSyntaxTreeByContent(content);
+export function getAstByContent(content:string, compilationSettings?:TypeScript.CompilationSettings):TypeScript.SourceUnit {
+	var syntaxTree = getSyntaxTreeByContent(content, compilationSettings);
+	var immutableSettings = TypeScript.ImmutableCompilationSettings.fromCompilationSettings(compilationSettings);
 
-	var settings = new TypeScript.CompilationSettings();
-	settings.codeGenTarget = TypeScript.LanguageVersion.EcmaScript5;
-	settings.moduleGenTarget = TypeScript.ModuleGenTarget.Synchronous;
-
-	var immutableSettings = TypeScript.ImmutableCompilationSettings.fromCompilationSettings(settings);
-
-	return TypeScript.SyntaxTreeToAstVisitor.visit(syntaxTree, "tmp.ts",immutableSettings, false);
+	return TypeScript.SyntaxTreeToAstVisitor.visit(syntaxTree, "tmp.ts", immutableSettings, false);
 }

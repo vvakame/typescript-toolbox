@@ -1,0 +1,174 @@
+{
+  "_start": 0,
+  "_end": 68,
+  "_trailingTriviaWidth": 0,
+  "_astID": 220,
+  "_preComments": null,
+  "_postComments": null,
+  "moduleElements": {
+    "_start": 0,
+    "_end": 67,
+    "_trailingTriviaWidth": 1,
+    "_astID": 219,
+    "_preComments": null,
+    "_postComments": null,
+    "_fileName": "tmp.ts",
+    "members": [
+      {
+        "_start": 0,
+        "_end": 67,
+        "_trailingTriviaWidth": 1,
+        "_astID": 218,
+        "_preComments": null,
+        "_postComments": null,
+        "modifiers": [
+          1
+        ],
+        "identifier": {
+          "_start": 16,
+          "_end": 21,
+          "_trailingTriviaWidth": 0,
+          "_astID": 204,
+          "_preComments": null,
+          "_postComments": null,
+          "_text": "hello",
+          "_valueText": null
+        },
+        "callSignature": {
+          "_start": 21,
+          "_end": 37,
+          "_trailingTriviaWidth": 1,
+          "_astID": 211,
+          "_preComments": null,
+          "_postComments": null,
+          "typeParameterList": null,
+          "parameterList": {
+            "_start": 21,
+            "_end": 37,
+            "_trailingTriviaWidth": 1,
+            "_astID": 210,
+            "_preComments": null,
+            "_postComments": null,
+            "openParenTrailingComments": null,
+            "parameters": {
+              "_start": 22,
+              "_end": 36,
+              "_trailingTriviaWidth": 0,
+              "_astID": 209,
+              "_preComments": null,
+              "_postComments": null,
+              "_fileName": "tmp.ts",
+              "members": [
+                {
+                  "_start": 22,
+                  "_end": 36,
+                  "_trailingTriviaWidth": 0,
+                  "_astID": 208,
+                  "_preComments": null,
+                  "_postComments": null,
+                  "dotDotDotToken": null,
+                  "modifiers": [],
+                  "identifier": {
+                    "_start": 22,
+                    "_end": 26,
+                    "_trailingTriviaWidth": 0,
+                    "_astID": 205,
+                    "_preComments": null,
+                    "_postComments": null,
+                    "_text": "word",
+                    "_valueText": null
+                  },
+                  "questionToken": null,
+                  "typeAnnotation": null,
+                  "equalsValueClause": {
+                    "_start": 27,
+                    "_end": 36,
+                    "_trailingTriviaWidth": 0,
+                    "_astID": 207,
+                    "_preComments": null,
+                    "_postComments": null,
+                    "value": {
+                      "_start": 29,
+                      "_end": 36,
+                      "_trailingTriviaWidth": 0,
+                      "_astID": 206,
+                      "_preComments": null,
+                      "_postComments": null,
+                      "_text": "\"world\"",
+                      "_valueText": "world"
+                    }
+                  }
+                }
+              ],
+              "_separatorCount": 0
+            }
+          },
+          "typeAnnotation": null
+        },
+        "block": {
+          "_start": 38,
+          "_end": 67,
+          "_trailingTriviaWidth": 1,
+          "_astID": 217,
+          "_preComments": null,
+          "_postComments": null,
+          "statements": {
+            "_start": 41,
+            "_end": 65,
+            "_trailingTriviaWidth": 1,
+            "_astID": 216,
+            "_preComments": null,
+            "_postComments": null,
+            "_fileName": "tmp.ts",
+            "members": [
+              {
+                "_start": 41,
+                "_end": 65,
+                "_trailingTriviaWidth": 1,
+                "_astID": 215,
+                "_preComments": null,
+                "_postComments": null,
+                "expression": {
+                  "_start": 48,
+                  "_end": 64,
+                  "_trailingTriviaWidth": 0,
+                  "_astID": 214,
+                  "_preComments": null,
+                  "_postComments": null,
+                  "_nodeType": 208,
+                  "left": {
+                    "_start": 48,
+                    "_end": 57,
+                    "_trailingTriviaWidth": 0,
+                    "_astID": 212,
+                    "_preComments": null,
+                    "_postComments": null,
+                    "_text": "\"Hello, \"",
+                    "_valueText": "Hello, "
+                  },
+                  "right": {
+                    "_start": 60,
+                    "_end": 64,
+                    "_trailingTriviaWidth": 0,
+                    "_astID": 213,
+                    "_preComments": null,
+                    "_postComments": null,
+                    "_text": "word",
+                    "_valueText": null
+                  }
+                }
+              }
+            ]
+          },
+          "closeBraceLeadingComments": null,
+          "closeBraceToken": {
+            "_start": 66,
+            "_end": 67
+          }
+        }
+      }
+    ]
+  },
+  "endOfFileTokenLeadingComments": null,
+  "_fileName": "tmp.ts"
+}
