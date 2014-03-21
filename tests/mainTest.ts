@@ -1,9 +1,10 @@
-declare var require: any;
-declare var beforeEach: any;
-declare var describe: any;
-declare var it: any;
+/// <reference path="../typings/mocha/mocha.d.ts" />
+/// <reference path="../typings/assert/assert.d.ts" />
 
-var assert = require('power-assert');
+import assert = require("power-assert");
+
+import compilerTest = require("./compilerTest");
+compilerTest.exec();
 
 describe('Array#indexOf()', function () {
 	beforeEach(function () {
