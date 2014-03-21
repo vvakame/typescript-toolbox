@@ -10,7 +10,7 @@ import c = require("../src/compiler");
 export function exec() {
 	describe("compiler test", () => {
 		var fixtureDir = "./tests/fixture";
-		var expectedDir = "./tests/expected";
+		var expectedDir = "./tests/expected/compiler";
 		describe("compileWithContent function", ()=> {
 			fs.readdirSync(fixtureDir)
 				.filter(fileName => /\.ts$/.test(fileName))
