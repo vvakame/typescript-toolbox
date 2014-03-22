@@ -6,7 +6,7 @@ export function createDefaultFormatCodeOptions() {
 	return new TypeScript.Services.FormatCodeOptions();
 }
 
-export function applyFormatterToContent(content: string, formatCodeOptions = createDefaultFormatCodeOptions()) {
+export function applyFormatterToContent(content:string, formatCodeOptions = createDefaultFormatCodeOptions()):string {
 	var languageServiceHost = new lsh.LanguageServiceHostImpl();
 	var filePath = "tmp.ts";
 

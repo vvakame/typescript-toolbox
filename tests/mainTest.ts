@@ -8,3 +8,6 @@ compilerTest.exec();
 
 import syntaxTreeTest = require("./syntaxTreeTest");
 syntaxTreeTest.exec();
+
+import formatterTest = require("./formatterTest");
+formatterTest.exec();
