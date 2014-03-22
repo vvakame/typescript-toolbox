@@ -23,6 +23,9 @@ export function exec() {
 						var content = fs.readFileSync(fixtureDir + "/" + fileName, "utf-8");
 						var opts = helper.readSettingJson(fixtureDir + "/" + name + ".json");
 						var mutableSettings = helper.optsToCompilationSettings(opts);
+						if (!mutableSettings) {
+							mutableSettings = new TypeScript.CompilationSettings();
+						}
 						var syntaxTree = s.getSyntaxTreeByContent(content, mutableSettings);
 
 						var result = JSON.stringify(syntaxTree, null, 2);
@@ -57,6 +60,9 @@ export function exec() {
 						var content = fs.readFileSync(fixtureDir + "/" + fileName, "utf-8");
 						var opts = helper.readSettingJson(fixtureDir + "/" + name + ".json");
 						var mutableSettings = helper.optsToCompilationSettings(opts);
+						if (!mutableSettings) {
+							mutableSettings = new TypeScript.CompilationSettings();
+						}
 						var syntaxTree = s.getAstByContent(content, mutableSettings);
 
 						var result = JSON.stringify(syntaxTree, replacer, 2);

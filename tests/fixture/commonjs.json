@@ -1,4 +1,5 @@
 {
-    "mutable": true,
-    "module": "commonjs"
+	"mutable": {
+		"module": "commonjs"
+	}
 }

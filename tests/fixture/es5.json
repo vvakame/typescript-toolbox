@@ -1,4 +1,5 @@
 {
-    "mutable": true,
-    "target": "es5"
+	"mutable": {
+		"target": "es5"
+	}
 }

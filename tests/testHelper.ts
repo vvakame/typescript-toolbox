@@ -11,16 +11,16 @@ export function readSettingJson(fileName:string):any {
 
 export function optsToCompilationSettings(opts:any):TypeScript.CompilationSettings {
 	if (!opts.mutable) {
-		return new TypeScript.CompilationSettings();
+		return null;
 	}
 
 	var mutableSettings = new TypeScript.CompilationSettings();
-	if (opts.target === "es5") {
+	if (opts.mutable.target === "es5") {
 		mutableSettings.codeGenTarget = TypeScript.LanguageVersion.EcmaScript5;
 	}
-	if (opts.module === "amd") {
+	if (opts.mutable.module === "amd") {
 		mutableSettings.moduleGenTarget = TypeScript.ModuleGenTarget.Asynchronous;
-	} else if (opts.module === "commonjs") {
+	} else if (opts.mutable.module === "commonjs") {
 		mutableSettings.moduleGenTarget = TypeScript.ModuleGenTarget.Synchronous;
 	}
 	return mutableSettings;

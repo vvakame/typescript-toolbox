@@ -1,4 +1,5 @@
 {
-    "mutable": true,
-    "module": "amd"
+	"mutable": {
+		"module": "amd"
+	}
 }

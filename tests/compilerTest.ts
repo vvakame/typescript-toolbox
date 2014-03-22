@@ -21,9 +21,15 @@ export function exec() {
 						var content = fs.readFileSync(fixtureDir + "/" + fileName, "utf-8");
 
 						var opts = helper.readSettingJson(fixtureDir + "/" + name + ".json");
-						var mutableSettings = helper.optsToCompilationSettings(opts);
 
-						var iter = c.compileWithContent(content, mutableSettings);
+						var iter:TypeScript.Iterator<TypeScript.CompileResult>;
+						var mutableSettings = helper.optsToCompilationSettings(opts);
+						if (mutableSettings) {
+							iter = c.compileWithContent(content, mutableSettings);
+						} else {
+							iter = c.compileWithContent(content, c.createImmutableCompilationSettings());
+						}
+
 						assert.ok(iter.moveNext());
 
 						var result = iter.current();
