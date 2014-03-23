@@ -77,6 +77,20 @@ module.exports = function (grunt) {
 				src: ['src/**/*.ts', 'test/**/*.ts']
 			}
 		},
+		tsd: {
+			client: {
+				options: {
+					// execute a command
+					command: 'reinstall',
+
+					//optional: always get from HEAD
+					latest: false,
+
+					// optional: specify config file
+					config: './tsd.json'
+				}
+			}
+		},
 		espower: {
 			test: {
 				files: [
@@ -91,6 +105,12 @@ module.exports = function (grunt) {
 			}
 		},
 		clean: {
+			tsd: {
+				src: [
+					// tsd installed
+					"typings/"
+				]
+			},
 			clientScript: {
 				src: [
 					// client
@@ -112,6 +132,10 @@ module.exports = function (grunt) {
 			}
 		}
 	});
+
+	grunt.registerTask(
+		'setup',
+		['clean:tsd', 'tsd']);
 
 	grunt.registerTask(
 		'default',

@@ -6,10 +6,10 @@
   "bundle": "typings/tsd.d.ts",
   "installed": {
     "assert/assert.d.ts": {
-      "commit": "0e44839eead15c54937dde9a52e616f1bd9e759a"
+      "commit": "486d47c1a5721468ef8bbd9d2395b813678b2bb0"
     },
     "mocha/mocha.d.ts": {
-      "commit": "0e44839eead15c54937dde9a52e616f1bd9e759a"
+      "commit": "486d47c1a5721468ef8bbd9d2395b813678b2bb0"
     }
   }
 }
