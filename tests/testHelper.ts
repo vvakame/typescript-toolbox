@@ -25,3 +25,17 @@ export function optsToCompilationSettings(opts:any):TypeScript.CompilationSettin
 	}
 	return mutableSettings;
 }
+
+export function optsToFormatCodeOptions(opts:any):TypeScript.Services.FormatCodeOptions {
+	var formatCodeOptions = new TypeScript.Services.FormatCodeOptions();
+	if (!opts.format) {
+		return formatCodeOptions;
+	}
+	if (opts.format.indentSize != null) {
+		formatCodeOptions.IndentSize = opts.format.indentSize;
+	}
+	if (opts.format.convertTabsToSpaces != null) {
+		formatCodeOptions.ConvertTabsToSpaces = opts.format.convertTabsToSpaces;
+	}
+	return formatCodeOptions;
+}

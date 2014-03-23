@@ -1,5 +1,5 @@
 class Sample {
-    test(word= "world") { return "Hello," + word; }
+	test(word= "world") { return "Hello," + word; }
 }
 
 var s = new Sample();

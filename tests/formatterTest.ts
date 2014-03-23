@@ -22,8 +22,8 @@ export function exec() {
 
 						var content = fs.readFileSync(fixtureDir + "/" + fileName, "utf-8");
 						var opts = helper.readSettingJson(fixtureDir + "/" + name + ".json");
-						var mutableSettings = helper.optsToCompilationSettings(opts);
-						var result = f.applyFormatterToContent(content);
+						var formatCodeOptions = helper.optsToFormatCodeOptions(opts);
+						var result = f.applyFormatterToContent(content, formatCodeOptions);
 
 						if (!fs.existsSync(expectedDir + "/" + name + ".ts")) {
 							fs.writeFileSync(expectedDir + "/" + name + ".ts", result);
