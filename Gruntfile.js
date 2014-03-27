@@ -74,7 +74,7 @@ module.exports = function (grunt) {
 				}
 			},
 			files: {
-				src: ['src/**/*.ts', 'test/**/*.ts']
+				src: ['lib/**/*.ts', 'test/**/*.ts']
 			}
 		},
 		tsd: {
@@ -115,7 +115,7 @@ module.exports = function (grunt) {
 				src: [
 					// client
 					'index.js',
-					'src/*.js',
+					'lib/*.js',
 					// client test
 					'tests/*.js'
 				]

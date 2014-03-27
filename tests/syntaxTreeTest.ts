@@ -5,7 +5,7 @@ import assert = require('power-assert');
 
 // collision between node.d.ts to typescriptServices
 var fs = require("fs");
-import s = require("../src/syntaxTree");
+import s = require("../lib/syntaxTree");
 import helper = require("./testHelper");
 
 export function exec() {
