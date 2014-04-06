@@ -1,1 +1,1 @@
-cat 0.9.7/typescriptServices.js to-commonjs.js > tss.js
+cat 1.0.0/typescriptServices.js to-commonjs.js > tss.js

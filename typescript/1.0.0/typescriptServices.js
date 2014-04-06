@@ -69508,4 +69508,3 @@ var TypeScript;
     })(TypeScript.Services || (TypeScript.Services = {}));
     var Services = TypeScript.Services;
 })(TypeScript || (TypeScript = {}));
-module.exports = TypeScript;

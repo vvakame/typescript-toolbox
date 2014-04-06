@@ -1,3 +1,3 @@
-/// <reference path="./0.9.7/typescriptServices.d.ts" />
+/// <reference path="./1.0.0/typescriptServices.d.ts" />
 
 export = TypeScript;
