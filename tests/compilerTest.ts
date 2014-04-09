@@ -50,7 +50,11 @@ export function exec() {
 						assert(result.outputFiles.length === 1);
 
 						var outFile = result.outputFiles[0];
-						var expected = fs.readFileSync(expectedDir + "/" + name + ".js", "utf-8");
+						var expectedFileName = expectedDir + "/" + name + ".js";
+						if (!fs.existsSync(expectedFileName)) {
+							fs.writeFileSync(expectedFileName, outFile.text);
+						}
+						var expected = fs.readFileSync(expectedFileName, "utf-8");
 						assert(expected === outFile.text);
 					});
 				});
