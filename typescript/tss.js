@@ -1,4 +1,4 @@
-var typescriptVersion = "1.0.0";
+var typescriptVersion = "1.0.1";
 
 var vm = require("vm");
 var fs = require("fs");
