@@ -1,5 +1,5 @@
 /// <reference path="../typings/mocha/mocha.d.ts" />
-/// <reference path="../typings/assert/assert.d.ts" />
+/// <reference path="../typings/power-assert/power-assert.d.ts" />
 
 import assert = require('power-assert');
 
@@ -9,14 +9,16 @@ import f = require("../lib/formatter");
 import helper = require("./testHelper");
 
 export function exec() {
+	"use strict";
+
 	describe("formatter test", () => {
 		var fixtureDir = "./tests/fixture";
 		describe("applyFormatterToContent function", ()=> {
 			var expectedDir = "./tests/expected/formatter";
 
 			fs.readdirSync(fixtureDir)
-				.filter(fileName => /\.ts$/.test(fileName))
-				.forEach(fileName => {
+				.filter((fileName: string) => /\.ts$/.test(fileName))
+				.forEach((fileName: string) => {
 					it(fileName, ()=> {
 						var name = fileName.match(/(.*)\.ts/)[1];
 

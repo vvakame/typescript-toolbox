@@ -1,5 +1,5 @@
 /// <reference path="../typings/mocha/mocha.d.ts" />
-/// <reference path="../typings/assert/assert.d.ts" />
+/// <reference path="../typings/power-assert/power-assert.d.ts" />
 
 import assert = require('power-assert');
 
@@ -9,13 +9,15 @@ import c = require("../lib/compiler");
 import helper = require("./testHelper");
 
 export function exec() {
+	"use strict";
+
 	describe("compiler test", () => {
 		var fixtureDir = "./tests/fixture";
 		var expectedDir = "./tests/expected/compiler";
 		describe("compileWithContent function", ()=> {
 			fs.readdirSync(fixtureDir)
-				.filter(fileName => /\.ts$/.test(fileName))
-				.forEach(fileName => {
+				.filter((fileName:string) => /\.ts$/.test(fileName))
+				.forEach((fileName:string) => {
 					it(fileName, ()=> {
 						var name = fileName.match(/(.*)\.ts/)[1];
 						var content = fs.readFileSync(fixtureDir + "/" + fileName, "utf-8");
@@ -37,14 +39,13 @@ export function exec() {
 						if (opts.error) {
 							var errors = result.diagnostics.filter(d=>d.info().category === TypeScript.DiagnosticCategory.Error);
 							assert(opts.error.length === errors.length);
-							opts.error.forEach((expectedError, i) => {
+							opts.error.forEach((expectedError:any, i:number) => {
 								assert(expectedError === errors[i].message());
 							});
 							return;
 						}
 
 						result.diagnostics.forEach(d=> {
-							var info = d.info();
 							assert(d.info().category !== TypeScript.DiagnosticCategory.Error, d.message());
 						});
 						assert(result.outputFiles.length === 1);

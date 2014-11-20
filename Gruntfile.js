@@ -25,10 +25,16 @@ module.exports = function (grunt) {
 			options: {
 				configuration: grunt.file.readJSON("tslint.json")
 			},
-			base: {
+			main: {
 				src: [
-					'lib/**/*.ts',
-					'tests/**/*.ts'
+					'lib/**/*.ts'
+				]
+			},
+			test: {
+				src: [
+					'tests/**/*.ts',
+					'!tests/expected/**/*.ts',
+					'!tests/fixture/**/*.ts'
 				]
 			}
 		},
@@ -86,7 +92,7 @@ module.exports = function (grunt) {
 
 	grunt.registerTask(
 			'default',
-			['clean:clientScript', 'ts:main', 'tslint']);
+			['clean:clientScript', 'ts:main', 'tslint:main']);
 
 	grunt.registerTask(
 			'test',

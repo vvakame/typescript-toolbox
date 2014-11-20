@@ -1,16 +1,24 @@
+"use strict";
+
 import TypeScript = require("../typescript/tss");
 
 export function createCompilationSettings():TypeScript.CompilationSettings {
+	"use strict";
+
 	return new TypeScript.CompilationSettings();
 }
 
 export function createImmutableCompilationSettings(settings = createCompilationSettings()):TypeScript.ImmutableCompilationSettings {
+	"use strict";
+
 	return TypeScript.ImmutableCompilationSettings.fromCompilationSettings(settings);
 }
 
 export function compileWithContent(content:string, compilationSettings:TypeScript.CompilationSettings):TypeScript.Iterator<TypeScript.CompileResult>;
 export function compileWithContent(content:string, compilationSettings:TypeScript.ImmutableCompilationSettings):TypeScript.Iterator<TypeScript.CompileResult>;
 export function compileWithContent(content:string, compilationSettings:any):TypeScript.Iterator<TypeScript.CompileResult> {
+	"use strict";
+
 	var immutableCompilationSettings:TypeScript.ImmutableCompilationSettings;
 	if (compilationSettings instanceof TypeScript.ImmutableCompilationSettings) {
 		immutableCompilationSettings = compilationSettings;

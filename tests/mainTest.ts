@@ -1,7 +1,5 @@
 /// <reference path="../typings/mocha/mocha.d.ts" />
-/// <reference path="../typings/assert/assert.d.ts" />
-
-import assert = require("power-assert");
+/// <reference path="../typings/power-assert/power-assert.d.ts" />
 
 import compilerTest = require("./compilerTest");
 compilerTest.exec();

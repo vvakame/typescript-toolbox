@@ -3,6 +3,8 @@ var fs = require("fs");
 import TypeScript = require("../typescript/tss");
 
 export function readSettingJson(fileName:string):any {
+	"use strict";
+
 	if (!fs.existsSync(fileName)) {
 		return <any>{};
 	}
@@ -10,6 +12,8 @@ export function readSettingJson(fileName:string):any {
 }
 
 export function optsToCompilationSettings(opts:any):TypeScript.CompilationSettings {
+	"use strict";
+
 	if (!opts.mutable) {
 		return null;
 	}
@@ -27,6 +31,8 @@ export function optsToCompilationSettings(opts:any):TypeScript.CompilationSettin
 }
 
 export function optsToFormatCodeOptions(opts:any):TypeScript.Services.FormatCodeOptions {
+	"use strict";
+
 	var formatCodeOptions = new TypeScript.Services.FormatCodeOptions();
 	if (!opts.format) {
 		return formatCodeOptions;

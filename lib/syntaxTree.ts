@@ -1,12 +1,18 @@
+"use strict";
+
 import TypeScript = require("../typescript/tss");
 
 import lsh = require("./languageServiceHost");
 
 export function createDefaultFormatCodeOptions() {
+	"use strict";
+
 	return new TypeScript.Services.FormatCodeOptions();
 }
 
 export function getSyntaxTreeByContent(content:string, compilationSettings?:TypeScript.CompilationSettings):TypeScript.SyntaxTree {
+	"use strict";
+
 	var languageServiceHost = new lsh.LanguageServiceHostImpl();
 	var filePath = "tmp.ts";
 
@@ -25,6 +31,8 @@ export function getSyntaxTreeByContent(content:string, compilationSettings?:Type
 }
 
 export function getAstByContent(content:string, compilationSettings?:TypeScript.CompilationSettings):TypeScript.SourceUnit {
+	"use strict";
+
 	var syntaxTree = getSyntaxTreeByContent(content, compilationSettings);
 	var immutableSettings = TypeScript.ImmutableCompilationSettings.fromCompilationSettings(compilationSettings);
 

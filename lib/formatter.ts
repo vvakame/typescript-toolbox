@@ -1,12 +1,18 @@
+"use strict";
+
 import TypeScript = require("../typescript/tss");
 
 import lsh = require("./languageServiceHost");
 
 export function createDefaultFormatCodeOptions() {
+	"use strict";
+
 	return new TypeScript.Services.FormatCodeOptions();
 }
 
 export function applyFormatterToContent(content:string, formatCodeOptions = createDefaultFormatCodeOptions()):string {
+	"use strict";
+
 	var languageServiceHost = new lsh.LanguageServiceHostImpl();
 	var filePath = "tmp.ts";
 
@@ -24,6 +30,8 @@ export function applyFormatterToContent(content:string, formatCodeOptions = crea
 }
 
 export function applyTextEdit(content:string, textEdits:TypeScript.Services.TextEdit[]):string {
+	"use strict";
+
 	for (var i = textEdits.length - 1; 0 <= i; i--) {
 		var textEdit = textEdits[i];
 		var b = content.substring(0, textEdit.minChar);
