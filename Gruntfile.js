@@ -12,7 +12,8 @@ module.exports = function (grunt) {
 				sourceMap: true,               // generate a source map for every output js file. [true (default) | false]
 				sourceRoot: '',                // where to locate TypeScript files. [(default) '' == source ts location]
 				mapRoot: '',                   // where to locate .map.js files. [(default) '' == generated js location.]
-				declaration: false             // generate a declaration .d.ts file for every output js file. [true | false (default)]
+				declaration: false,            // generate a declaration .d.ts file for every output js file. [true | false (default)]
+				compiler: './typescript/master/8b35be/tsc.js'
 			},
 			main: {
 				src: ['index.ts']
