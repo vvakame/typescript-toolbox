@@ -1,1 +1,1 @@
-exports.ts = require("./loader").ts;
+module.exports = require("./loader").ts;

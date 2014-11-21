@@ -1,40 +1,29 @@
 "use strict";
 
-import TypeScript = require("../typescript/tss");
+import ts = require("../typescript/ts");
 
-import lsh = require("./languageServiceHost");
-
-export function createDefaultFormatCodeOptions() {
+export function createDefaultFormatCodeOptions():ts.FormatCodeOptions {
 	"use strict";
 
-	return new TypeScript.Services.FormatCodeOptions();
+	// TODO what is default?
+	return {
+		InsertSpaceAfterCommaDelimiter: true,
+		InsertSpaceAfterSemicolonInForStatements: true,
+		InsertSpaceBeforeAndAfterBinaryOperators: true,
+		InsertSpaceAfterKeywordsInControlFlowStatements: true,
+		InsertSpaceAfterFunctionKeywordForAnonymousFunctions: false,
+		InsertSpaceAfterOpeningAndBeforeClosingNonemptyParenthesis: false,
+		PlaceOpenBraceOnNewLineForFunctions: false,
+		PlaceOpenBraceOnNewLineForControlBlocks: false,
+		IndentSize: 4,
+		TabSize: 4,
+		NewLineCharacter: "\n",
+		ConvertTabsToSpaces: true
+	};
 }
 
-export function getSyntaxTreeByContent(content:string, compilationSettings?:TypeScript.CompilationSettings):TypeScript.SyntaxTree {
+export function getSourceFileByContent(content:string):ts.SourceFile {
 	"use strict";
 
-	var languageServiceHost = new lsh.LanguageServiceHostImpl();
-	var filePath = "tmp.ts";
-
-	languageServiceHost.addFile({
-		fileName: filePath,
-		version: 0,
-		open: false,
-		byteOrderMark: TypeScript.ByteOrderMark.None,
-		snapshot: TypeScript.ScriptSnapshot.fromString(content)
-	});
-	if (compilationSettings) {
-		languageServiceHost.setCompilationSettings(compilationSettings);
-	}
-	var languageService = new TypeScript.Services.LanguageService(languageServiceHost);
-	return languageService.getSyntaxTree(filePath);
-}
-
-export function getAstByContent(content:string, compilationSettings?:TypeScript.CompilationSettings):TypeScript.SourceUnit {
-	"use strict";
-
-	var syntaxTree = getSyntaxTreeByContent(content, compilationSettings);
-	var immutableSettings = TypeScript.ImmutableCompilationSettings.fromCompilationSettings(compilationSettings);
-
-	return TypeScript.SyntaxTreeToAstVisitor.visit(syntaxTree, "tmp.ts", immutableSettings, false);
+	return ts.createSourceFile("tmp.ts", content, ts.ScriptTarget.Latest, "0", false);
 }

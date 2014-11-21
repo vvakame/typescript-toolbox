@@ -1,6 +1,8 @@
+declare var require: Function;
+
 var fs = require("fs");
 
-import TypeScript = require("../typescript/tss");
+import ts = require("../typescript/ts");
 
 export function readSettingJson(fileName:string):any {
 	"use strict";
@@ -11,29 +13,45 @@ export function readSettingJson(fileName:string):any {
 	return JSON.parse(fs.readFileSync(fileName, "utf-8"));
 }
 
-export function optsToCompilationSettings(opts:any):TypeScript.CompilationSettings {
+export function optsToCompilationSettings(opts:any):ts.CompilationSettings {
 	"use strict";
 
 	if (!opts.mutable) {
 		return null;
 	}
 
-	var mutableSettings = new TypeScript.CompilationSettings();
+	var mutableSettings: ts.CompilationSettings = {};
 	if (opts.mutable.target === "es5") {
-		mutableSettings.codeGenTarget = TypeScript.LanguageVersion.EcmaScript5;
+		mutableSettings.codeGenTarget = ts.LanguageVersion.EcmaScript5;
+	} else if (opts.mutable.target === "es6") {
+		mutableSettings.codeGenTarget = ts.LanguageVersion.EcmaScript6;
 	}
 	if (opts.mutable.module === "amd") {
-		mutableSettings.moduleGenTarget = TypeScript.ModuleGenTarget.Asynchronous;
+		mutableSettings.moduleGenTarget = ts.ModuleGenTarget.Asynchronous;
 	} else if (opts.mutable.module === "commonjs") {
-		mutableSettings.moduleGenTarget = TypeScript.ModuleGenTarget.Synchronous;
+		mutableSettings.moduleGenTarget = ts.ModuleGenTarget.Synchronous;
 	}
 	return mutableSettings;
 }
 
-export function optsToFormatCodeOptions(opts:any):TypeScript.Services.FormatCodeOptions {
+export function optsToFormatCodeOptions(opts:any):ts.FormatCodeOptions {
 	"use strict";
 
-	var formatCodeOptions = new TypeScript.Services.FormatCodeOptions();
+	// TODO what is default?
+	var formatCodeOptions: ts.FormatCodeOptions = {
+		InsertSpaceAfterCommaDelimiter: true,
+		InsertSpaceAfterSemicolonInForStatements: true,
+		InsertSpaceBeforeAndAfterBinaryOperators: true,
+		InsertSpaceAfterKeywordsInControlFlowStatements: true,
+		InsertSpaceAfterFunctionKeywordForAnonymousFunctions: false,
+		InsertSpaceAfterOpeningAndBeforeClosingNonemptyParenthesis: false,
+		PlaceOpenBraceOnNewLineForFunctions: false,
+		PlaceOpenBraceOnNewLineForControlBlocks: false,
+		IndentSize: 4,
+		TabSize: 4,
+		NewLineCharacter: "\n",
+		ConvertTabsToSpaces: true
+	};
 	if (!opts.format) {
 		return formatCodeOptions;
 	}

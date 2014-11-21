@@ -1,13 +1,27 @@
 "use strict";
 
-import TypeScript = require("../typescript/tss");
+import ts = require("../typescript/ts");
 
 import lsh = require("./languageServiceHost");
 
-export function createDefaultFormatCodeOptions() {
+export function createDefaultFormatCodeOptions():ts.FormatCodeOptions {
 	"use strict";
 
-	return new TypeScript.Services.FormatCodeOptions();
+	// TODO what is default?
+	return {
+		InsertSpaceAfterCommaDelimiter: true,
+		InsertSpaceAfterSemicolonInForStatements: true,
+		InsertSpaceBeforeAndAfterBinaryOperators: true,
+		InsertSpaceAfterKeywordsInControlFlowStatements: true,
+		InsertSpaceAfterFunctionKeywordForAnonymousFunctions: false,
+		InsertSpaceAfterOpeningAndBeforeClosingNonemptyParenthesis: false,
+		PlaceOpenBraceOnNewLineForFunctions: false,
+		PlaceOpenBraceOnNewLineForControlBlocks: false,
+		IndentSize: 4,
+		TabSize: 4,
+		NewLineCharacter: "\n",
+		ConvertTabsToSpaces: true
+	};
 }
 
 export function applyFormatterToContent(content:string, formatCodeOptions = createDefaultFormatCodeOptions()):string {
@@ -18,25 +32,25 @@ export function applyFormatterToContent(content:string, formatCodeOptions = crea
 
 	languageServiceHost.addFile({
 		fileName: filePath,
-		version: 0,
+		version: "0",
 		open: false,
-		byteOrderMark: TypeScript.ByteOrderMark.None,
-		snapshot: TypeScript.ScriptSnapshot.fromString(content)
+		snapshot: ts.ScriptSnapshot.fromString(content)
 	});
-	var languageService = new TypeScript.Services.LanguageService(languageServiceHost);
-	var textEdits = languageService.getFormattingEditsForRange(filePath, 0, content.length, formatCodeOptions);
+	var languageService = ts.createLanguageService(languageServiceHost, ts.createDocumentRegistry());
+	var textEdits = languageService.getFormattingEditsForDocument(filePath, formatCodeOptions);
 
 	return applyTextEdit(content, textEdits);
 }
 
-export function applyTextEdit(content:string, textEdits:TypeScript.Services.TextEdit[]):string {
+// TODO rename function
+export function applyTextEdit(content:string, textEdits:ts.TextChange[]):string {
 	"use strict";
 
 	for (var i = textEdits.length - 1; 0 <= i; i--) {
 		var textEdit = textEdits[i];
-		var b = content.substring(0, textEdit.minChar);
-		var a = content.substring(textEdit.limChar);
-		content = b + textEdit.text + a;
+		var b = content.substring(0, textEdit.span.start());
+		var a = content.substring(textEdit.span.end());
+		content = b + textEdit.newText + a;
 	}
 	return content;
 }

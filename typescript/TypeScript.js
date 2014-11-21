@@ -1,1 +1,1 @@
-exports.TypeScript = require("./loader").TypeScript;
+module.exports = require("./loader").TypeScript;

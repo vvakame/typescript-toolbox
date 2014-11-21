@@ -1,23 +1,19 @@
-import TypeScript = require("../typescript/tss");
+import ts = require("../typescript/ts");
 
 export class FileInfo {
 	fileName:string;
-	version:number;
+	version:string;
 	open:boolean;
-	byteOrderMark:TypeScript.ByteOrderMark;
-	snapshot:TypeScript.IScriptSnapshot;
+	snapshot:ts.IScriptSnapshot;
 }
 
-export class LanguageServiceHostImpl implements TypeScript.Services.ILanguageServiceHost {
-	compilationSettings = new TypeScript.CompilationSettings();
-	diagnostics:TypeScript.Services.ILanguageServicesDiagnostics = {
-		log: (content:string) => console.log(content)
-	};
+export class LanguageServiceHostImpl implements ts.LanguageServiceHost {
+	compilationSettings:ts.CompilationSettings = {};
 	fileInfos:{ [fileName: string]: FileInfo } = {};
 
 	// for ILanguageServiceHost impl
 
-	getCompilationSettings():TypeScript.CompilationSettings {
+	getCompilationSettings():ts.CompilerOptions {
 		return this.compilationSettings;
 	}
 
@@ -25,7 +21,7 @@ export class LanguageServiceHostImpl implements TypeScript.Services.ILanguageSer
 		return Object.getOwnPropertyNames(this.fileInfos);
 	}
 
-	getScriptVersion(fileName:string):number {
+	getScriptVersion(fileName:string):string {
 		return this.fileInfos[fileName].version;
 	}
 
@@ -33,70 +29,34 @@ export class LanguageServiceHostImpl implements TypeScript.Services.ILanguageSer
 		return this.fileInfos[fileName].open;
 	}
 
-	getScriptByteOrderMark(fileName:string):TypeScript.ByteOrderMark {
-		return this.fileInfos[fileName].byteOrderMark;
-	}
-
-	getScriptSnapshot(fileName:string):TypeScript.IScriptSnapshot {
+	getScriptSnapshot(fileName:string):ts.IScriptSnapshot {
 		return this.fileInfos[fileName].snapshot;
 	}
 
-	getDiagnosticsObject():TypeScript.Services.ILanguageServicesDiagnostics {
-		return this.diagnostics;
-	}
-
 	getLocalizedDiagnosticMessages():any {
-		return null;
+		return "";
 	}
 
-	// for ILogger impl
-
-	information():boolean {
-		return false;
+	getCancellationToken():ts.CancellationToken {
+		return {
+			isCancellationRequested() {
+				return false;
+			}
+		};
 	}
 
-	debug():boolean {
-		return false;
+	getCurrentDirectory():string {
+		return "";
 	}
 
-	warning():boolean {
-		return false;
+	getDefaultLibFilename():string {
+		return "";
 	}
 
-	error():boolean {
-		return false;
-	}
-
-	fatal():boolean {
-		return false;
-	}
+	// for Logger impl
 
 	log(s:string):void {
 		// console.log(s);
-	}
-
-	// for IReferenceResolverHost impl
-
-	resolveRelativePath(path:string, directory:string):string {
-		console.log("resolveRelativePath", path, directory);
-		return path;
-	}
-
-	fileExists(path:string):boolean {
-		console.log("fileExists", path);
-		var fs = require("fs");
-		return fs.existsSync(path);
-	}
-
-	directoryExists(path:string):boolean {
-		console.log("directoryExists", path);
-		var fs = require("fs");
-		return fs.existsSync(path);
-	}
-
-	getParentDirectory(path:string):string {
-		console.log("getParentDirectory", path);
-		return path;
 	}
 
 	// original
@@ -104,7 +64,7 @@ export class LanguageServiceHostImpl implements TypeScript.Services.ILanguageSer
 		this.fileInfos[file.fileName] = file;
 	}
 
-	setCompilationSettings(compilationSettings:TypeScript.CompilationSettings):void {
+	setCompilationSettings(compilationSettings:ts.CompilationSettings):void {
 		this.compilationSettings = compilationSettings;
 	}
 }

@@ -1,270 +1,128 @@
 {
-  "isDeclaration": false,
-  "languageVersion": "EcmaScript3",
-  "parseOptions": {
-    "allowAutomaticSemicolonInsertion": true
-  },
-  "sourceUnit": {
-    "kind": "SourceUnit",
-    "fullWidth": 68,
-    "isIncrementallyUnusable": true,
-    "moduleElements": [
-      {
-        "kind": "FunctionDeclaration",
-        "fullWidth": 68,
-        "modifiers": [
+  "pos": 0,
+  "end": 68,
+  "flags": 0,
+  "filename": "tmp.ts",
+  "text": "export function hello(word = \"world\") {\n\treturn \"Hello, \" + word;\n}\n",
+  "syntacticErrors": [],
+  "semanticErrors": [],
+  "referencedFiles": [],
+  "amdDependencies": [],
+  "statements": [
+    {
+      "pos": 0,
+      "end": 67,
+      "flags": 1,
+      "name": {
+        "pos": 15,
+        "end": 21,
+        "text": "hello"
+      },
+      "parameters": [
+        {
+          "pos": 22,
+          "end": 36,
+          "flags": 0,
+          "name": {
+            "pos": 22,
+            "end": 26,
+            "text": "word"
+          },
+          "initializer": {
+            "pos": 28,
+            "end": 36,
+            "text": "world"
+          }
+        }
+      ],
+      "body": {
+        "pos": 37,
+        "end": 67,
+        "statements": [
           {
-            "kind": "ExportKeyword",
-            "width": 6,
-            "fullWidth": 7,
-            "text": "export",
-            "value": "export",
-            "valueText": "export",
-            "hasTrailingTrivia": true,
-            "trailingTrivia": [
-              {
-                "kind": "WhitespaceTrivia",
-                "text": " "
+            "pos": 39,
+            "end": 65,
+            "expression": {
+              "pos": 47,
+              "end": 64,
+              "left": {
+                "pos": 47,
+                "end": 57,
+                "text": "Hello, "
+              },
+              "operator": 32,
+              "right": {
+                "pos": 59,
+                "end": 64,
+                "text": "word"
               }
-            ]
+            }
           }
         ],
-        "functionKeyword": {
-          "kind": "FunctionKeyword",
-          "width": 8,
-          "fullWidth": 9,
-          "text": "function",
-          "value": "function",
-          "valueText": "function",
-          "hasTrailingTrivia": true,
-          "trailingTrivia": [
-            {
-              "kind": "WhitespaceTrivia",
-              "text": " "
-            }
-          ]
+        "kind": 186
+      }
+    }
+  ],
+  "externalModuleIndicator": {
+    "pos": 0,
+    "end": 67,
+    "flags": 1,
+    "name": {
+      "pos": 15,
+      "end": 21,
+      "text": "hello"
+    },
+    "parameters": [
+      {
+        "pos": 22,
+        "end": 36,
+        "flags": 0,
+        "name": {
+          "pos": 22,
+          "end": 26,
+          "text": "word"
         },
-        "identifier": {
-          "kind": "IdentifierName",
-          "width": 5,
-          "text": "hello",
-          "value": "hello",
-          "valueText": "hello"
-        },
-        "callSignature": {
-          "kind": "CallSignature",
-          "fullWidth": 17,
-          "parameterList": {
-            "kind": "ParameterList",
-            "fullWidth": 17,
-            "openParenToken": {
-              "kind": "OpenParenToken",
-              "width": 1,
-              "text": "(",
-              "value": "(",
-              "valueText": "("
-            },
-            "parameters": [
-              {
-                "kind": "Parameter",
-                "fullWidth": 14,
-                "modifiers": [],
-                "identifier": {
-                  "kind": "IdentifierName",
-                  "width": 4,
-                  "fullWidth": 5,
-                  "text": "word",
-                  "value": "word",
-                  "valueText": "word",
-                  "hasTrailingTrivia": true,
-                  "trailingTrivia": [
-                    {
-                      "kind": "WhitespaceTrivia",
-                      "text": " "
-                    }
-                  ]
-                },
-                "equalsValueClause": {
-                  "kind": "EqualsValueClause",
-                  "fullWidth": 9,
-                  "equalsToken": {
-                    "kind": "EqualsToken",
-                    "width": 1,
-                    "fullWidth": 2,
-                    "text": "=",
-                    "value": "=",
-                    "valueText": "=",
-                    "hasTrailingTrivia": true,
-                    "trailingTrivia": [
-                      {
-                        "kind": "WhitespaceTrivia",
-                        "text": " "
-                      }
-                    ]
-                  },
-                  "value": {
-                    "kind": "StringLiteral",
-                    "width": 7,
-                    "text": "\"world\"",
-                    "value": "world",
-                    "valueText": "world"
-                  }
-                }
-              }
-            ],
-            "closeParenToken": {
-              "kind": "CloseParenToken",
-              "width": 1,
-              "fullWidth": 2,
-              "text": ")",
-              "value": ")",
-              "valueText": ")",
-              "hasTrailingTrivia": true,
-              "trailingTrivia": [
-                {
-                  "kind": "WhitespaceTrivia",
-                  "text": " "
-                }
-              ]
-            }
-          }
-        },
-        "block": {
-          "kind": "Block",
-          "fullWidth": 30,
-          "openBraceToken": {
-            "kind": "OpenBraceToken",
-            "width": 1,
-            "fullWidth": 2,
-            "text": "{",
-            "value": "{",
-            "valueText": "{",
-            "hasTrailingTrivia": true,
-            "hasTrailingNewLine": true,
-            "trailingTrivia": [
-              {
-                "kind": "NewLineTrivia",
-                "text": "\n"
-              }
-            ]
-          },
-          "statements": [
-            {
-              "kind": "ReturnStatement",
-              "fullWidth": 26,
-              "returnKeyword": {
-                "kind": "ReturnKeyword",
-                "width": 6,
-                "fullWidth": 8,
-                "text": "return",
-                "value": "return",
-                "valueText": "return",
-                "hasLeadingTrivia": true,
-                "hasTrailingTrivia": true,
-                "leadingTrivia": [
-                  {
-                    "kind": "WhitespaceTrivia",
-                    "text": "\t"
-                  }
-                ],
-                "trailingTrivia": [
-                  {
-                    "kind": "WhitespaceTrivia",
-                    "text": " "
-                  }
-                ]
-              },
-              "expression": {
-                "kind": "AddExpression",
-                "fullWidth": 16,
-                "left": {
-                  "kind": "StringLiteral",
-                  "width": 9,
-                  "fullWidth": 10,
-                  "text": "\"Hello, \"",
-                  "value": "Hello, ",
-                  "valueText": "Hello, ",
-                  "hasTrailingTrivia": true,
-                  "trailingTrivia": [
-                    {
-                      "kind": "WhitespaceTrivia",
-                      "text": " "
-                    }
-                  ]
-                },
-                "operatorToken": {
-                  "kind": "PlusToken",
-                  "width": 1,
-                  "fullWidth": 2,
-                  "text": "+",
-                  "value": "+",
-                  "valueText": "+",
-                  "hasTrailingTrivia": true,
-                  "trailingTrivia": [
-                    {
-                      "kind": "WhitespaceTrivia",
-                      "text": " "
-                    }
-                  ]
-                },
-                "right": {
-                  "kind": "IdentifierName",
-                  "width": 4,
-                  "text": "word",
-                  "value": "word",
-                  "valueText": "word"
-                }
-              },
-              "semicolonToken": {
-                "kind": "SemicolonToken",
-                "width": 1,
-                "fullWidth": 2,
-                "text": ";",
-                "value": ";",
-                "valueText": ";",
-                "hasTrailingTrivia": true,
-                "hasTrailingNewLine": true,
-                "trailingTrivia": [
-                  {
-                    "kind": "NewLineTrivia",
-                    "text": "\n"
-                  }
-                ]
-              }
-            }
-          ],
-          "closeBraceToken": {
-            "kind": "CloseBraceToken",
-            "width": 1,
-            "fullWidth": 2,
-            "text": "}",
-            "value": "}",
-            "valueText": "}",
-            "hasTrailingTrivia": true,
-            "hasTrailingNewLine": true,
-            "trailingTrivia": [
-              {
-                "kind": "NewLineTrivia",
-                "text": "\n"
-              }
-            ]
-          }
+        "initializer": {
+          "pos": 28,
+          "end": 36,
+          "text": "world"
         }
       }
     ],
-    "endOfFileToken": {
-      "kind": "EndOfFileToken",
-      "width": 0,
-      "text": ""
+    "body": {
+      "pos": 37,
+      "end": 67,
+      "statements": [
+        {
+          "pos": 39,
+          "end": 65,
+          "expression": {
+            "pos": 47,
+            "end": 64,
+            "left": {
+              "pos": 47,
+              "end": 57,
+              "text": "Hello, "
+            },
+            "operator": 32,
+            "right": {
+              "pos": 59,
+              "end": 64,
+              "text": "word"
+            }
+          }
+        }
+      ],
+      "kind": 186
     }
   },
-  "lineMap": {
-    "lineStarts": [
-      0,
-      40,
-      66,
-      68
-    ],
-    "length": 68
+  "nodeCount": 10,
+  "identifierCount": 3,
+  "version": "0",
+  "isOpen": false,
+  "languageVersion": 2,
+  "identifiers": {
+    "hello": "hello",
+    "word": "word"
   }
 }

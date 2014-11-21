@@ -1,6 +1,8 @@
 /// <reference path="../typings/mocha/mocha.d.ts" />
 /// <reference path="../typings/power-assert/power-assert.d.ts" />
 
+declare var require: Function;
+
 import assert = require('power-assert');
 
 // collision between node.d.ts to typescriptServices
