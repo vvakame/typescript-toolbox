@@ -1,34 +1,36 @@
-import TypeScript = require("../typescript/tss");
+"use strict";
+
+import ts = require("../typescript/ts");
 
 import lsh = require("./languageServiceHost");
+import utils = require("./utils");
 
-export function createDefaultFormatCodeOptions() {
-	return new TypeScript.Services.FormatCodeOptions();
-}
+export function applyFormatterToContent(content:string, formatCodeOptions = utils.createDefaultFormatCodeOptions()):string {
+	"use strict";
 
-export function applyFormatterToContent(content:string, formatCodeOptions = createDefaultFormatCodeOptions()):string {
 	var languageServiceHost = new lsh.LanguageServiceHostImpl();
 	var filePath = "tmp.ts";
 
 	languageServiceHost.addFile({
 		fileName: filePath,
-		version: 0,
+		version: "0",
 		open: false,
-		byteOrderMark: TypeScript.ByteOrderMark.None,
-		snapshot: TypeScript.ScriptSnapshot.fromString(content)
+		snapshot: ts.ScriptSnapshot.fromString(content)
 	});
-	var languageService = new TypeScript.Services.LanguageService(languageServiceHost);
-	var textEdits = languageService.getFormattingEditsForRange(filePath, 0, content.length, formatCodeOptions);
+	var languageService = ts.createLanguageService(languageServiceHost, ts.createDocumentRegistry());
+	var textChanges = languageService.getFormattingEditsForDocument(filePath, formatCodeOptions);
 
-	return applyTextEdit(content, textEdits);
+	return applyTextChange(content, textChanges);
 }
 
-export function applyTextEdit(content:string, textEdits:TypeScript.Services.TextEdit[]):string {
+export function applyTextChange(content:string, textEdits:ts.TextChange[]):string {
+	"use strict";
+
 	for (var i = textEdits.length - 1; 0 <= i; i--) {
 		var textEdit = textEdits[i];
-		var b = content.substring(0, textEdit.minChar);
-		var a = content.substring(textEdit.limChar);
-		content = b + textEdit.text + a;
+		var b = content.substring(0, textEdit.span.start());
+		var a = content.substring(textEdit.span.end());
+		content = b + textEdit.newText + a;
 	}
 	return content;
 }

@@ -1,4 +1,4 @@
-var typescriptVersion = "1.0.1";
+var typescriptVersion = "master/8b35be";
 
 var vm = require("vm");
 var fs = require("fs");
@@ -8,4 +8,4 @@ var typescriptServicesCode = fs.readFileSync(fileName, {encoding: "utf-8"});
 
 var sandbox = {};
 vm.runInNewContext(typescriptServicesCode, sandbox, "typescriptServices.js");
-module.exports = sandbox.TypeScript;
+module.exports = sandbox;

@@ -1,14 +1,16 @@
 .idea/
+!.idea/scopes/*.xml
+!.idea/watcherTasks.xml
+
 node_modules/
 .tscache/
 
 typings/
 
-typescript/tss.js
-
-!Gruntfile.js
-/*.js
 lib/**/*.js
+lib/**/*.js.map
+lib/**/*.d.ts
 
 tests/*.js
+tests/*.js.map
 testEspowered/

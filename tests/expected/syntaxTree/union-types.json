@@ -1,0 +1,55 @@
+{
+  "pos": 0,
+  "end": 33,
+  "flags": 0,
+  "filename": "tmp.ts",
+  "text": "var test:string|boolean |number;\n",
+  "syntacticErrors": [],
+  "semanticErrors": [],
+  "referencedFiles": [],
+  "amdDependencies": [],
+  "statements": [
+    {
+      "pos": 0,
+      "end": 32,
+      "declarations": [
+        {
+          "pos": 3,
+          "end": 31,
+          "flags": 0,
+          "name": {
+            "pos": 3,
+            "end": 8,
+            "text": "test"
+          },
+          "type": {
+            "pos": 9,
+            "end": 31,
+            "types": [
+              {
+                "pos": 9,
+                "end": 15
+              },
+              {
+                "pos": 16,
+                "end": 23
+              },
+              {
+                "pos": 25,
+                "end": 31
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "nodeCount": 7,
+  "identifierCount": 1,
+  "version": "0",
+  "isOpen": false,
+  "languageVersion": 2,
+  "identifiers": {
+    "test": "test"
+  }
+}
