@@ -1,7 +1,9 @@
+"use strict";
+
 export function createDefaultFormatCodeOptions():ts.FormatCodeOptions {
 	"use strict";
 
-	// TODO what is default?
+	// copy from 1.0.1
 	return {
 		InsertSpaceAfterCommaDelimiter: true,
 		InsertSpaceAfterSemicolonInForStatements: true,
@@ -13,7 +15,7 @@ export function createDefaultFormatCodeOptions():ts.FormatCodeOptions {
 		PlaceOpenBraceOnNewLineForControlBlocks: false,
 		IndentSize: 4,
 		TabSize: 4,
-		NewLineCharacter: "\n",
+		NewLineCharacter: "\r\n",
 		ConvertTabsToSpaces: true
 	};
 }
