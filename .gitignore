@@ -1,4 +1,7 @@
 .idea/
+!.idea/scopes/*.xml
+!.idea/watcherTasks.xml
+
 node_modules/
 .tscache/
 
