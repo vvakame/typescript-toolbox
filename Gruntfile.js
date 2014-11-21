@@ -16,7 +16,10 @@ module.exports = function (grunt) {
 				compiler: './typescript/master/8b35be/tsc.js'
 			},
 			main: {
-				src: ['index.ts']
+				options: {
+					declaration: true
+				},
+				src: ['lib/index.ts']
 			},
 			test: {
 				src: ['tests/mainTest.ts']
@@ -68,10 +71,13 @@ module.exports = function (grunt) {
 			clientScript: {
 				src: [
 					// client
-					'index.js',
 					'lib/*.js',
+					'lib/*.js.map',
+					'lib/*.d.ts',
 					// client test
-					'tests/*.js'
+					'tests/*.js',
+					'tests/*.js.map',
+					'tests/*.d.ts'
 				]
 			}
 		},

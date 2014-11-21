@@ -3,28 +3,9 @@
 import ts = require("../typescript/ts");
 
 import lsh = require("./languageServiceHost");
+import utils = require("./utils");
 
-export function createDefaultFormatCodeOptions():ts.FormatCodeOptions {
-	"use strict";
-
-	// TODO what is default?
-	return {
-		InsertSpaceAfterCommaDelimiter: true,
-		InsertSpaceAfterSemicolonInForStatements: true,
-		InsertSpaceBeforeAndAfterBinaryOperators: true,
-		InsertSpaceAfterKeywordsInControlFlowStatements: true,
-		InsertSpaceAfterFunctionKeywordForAnonymousFunctions: false,
-		InsertSpaceAfterOpeningAndBeforeClosingNonemptyParenthesis: false,
-		PlaceOpenBraceOnNewLineForFunctions: false,
-		PlaceOpenBraceOnNewLineForControlBlocks: false,
-		IndentSize: 4,
-		TabSize: 4,
-		NewLineCharacter: "\n",
-		ConvertTabsToSpaces: true
-	};
-}
-
-export function applyFormatterToContent(content:string, formatCodeOptions = createDefaultFormatCodeOptions()):string {
+export function applyFormatterToContent(content:string, formatCodeOptions = utils.createDefaultFormatCodeOptions()):string {
 	"use strict";
 
 	var languageServiceHost = new lsh.LanguageServiceHostImpl();
@@ -37,13 +18,12 @@ export function applyFormatterToContent(content:string, formatCodeOptions = crea
 		snapshot: ts.ScriptSnapshot.fromString(content)
 	});
 	var languageService = ts.createLanguageService(languageServiceHost, ts.createDocumentRegistry());
-	var textEdits = languageService.getFormattingEditsForDocument(filePath, formatCodeOptions);
+	var textChanges = languageService.getFormattingEditsForDocument(filePath, formatCodeOptions);
 
-	return applyTextEdit(content, textEdits);
+	return applyTextChange(content, textChanges);
 }
 
-// TODO rename function
-export function applyTextEdit(content:string, textEdits:ts.TextChange[]):string {
+export function applyTextChange(content:string, textEdits:ts.TextChange[]):string {
 	"use strict";
 
 	for (var i = textEdits.length - 1; 0 <= i; i--) {

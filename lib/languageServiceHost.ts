@@ -54,7 +54,6 @@ export class LanguageServiceHostImpl implements ts.LanguageServiceHost {
 	}
 
 	// for Logger impl
-
 	log(s:string):void {
 		// console.log(s);
 	}
