@@ -1,5 +1,7 @@
 "use strict";
 
+import ts = require("./ts");
+
 export function createDefaultFormatCodeOptions():ts.FormatCodeOptions {
 	"use strict";
 

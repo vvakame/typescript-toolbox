@@ -1,5 +1,4 @@
-export import ts = require("../typescript/ts");
-export import TypeScript = require("../typescript/TypeScript");
+export import ts = require("./ts");
 
 export import formatter = require("./formatter");
 export import syntaxTree = require("./syntaxTree");

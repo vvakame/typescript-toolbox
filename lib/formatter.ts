@@ -1,6 +1,6 @@
 "use strict";
 
-import ts = require("../typescript/ts");
+import ts = require("./ts");
 
 import lsh = require("./languageServiceHost");
 import utils = require("./utils");

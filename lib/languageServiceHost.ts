@@ -1,4 +1,4 @@
-import ts = require("../typescript/ts");
+import ts = require("./ts");
 
 export class FileInfo {
 	fileName:string;

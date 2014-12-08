@@ -4,8 +4,10 @@
   "flags": 0,
   "filename": "tmp.ts",
   "text": "export function hello(word = \"world\") {\n\treturn \"Hello, \" + word;\n}\n",
-  "syntacticErrors": [],
-  "semanticErrors": [],
+  "referenceDiagnostics": [],
+  "parseDiagnostics": [],
+  "grammarDiagnostics": [],
+  "semanticDiagnostics": [],
   "referencedFiles": [],
   "amdDependencies": [],
   "statements": [
@@ -13,6 +15,12 @@
       "pos": 0,
       "end": 67,
       "flags": 1,
+      "modifiers": [
+        {
+          "pos": 0,
+          "end": 6
+        }
+      ],
       "name": {
         "pos": 15,
         "end": 21,
@@ -22,7 +30,6 @@
         {
           "pos": 22,
           "end": 36,
-          "flags": 0,
           "name": {
             "pos": 22,
             "end": 26,
@@ -58,15 +65,24 @@
               }
             }
           }
-        ],
-        "kind": 186
+        ]
       }
     }
   ],
+  "endOfFileToken": {
+    "pos": 67,
+    "end": 68
+  },
   "externalModuleIndicator": {
     "pos": 0,
     "end": 67,
     "flags": 1,
+    "modifiers": [
+      {
+        "pos": 0,
+        "end": 6
+      }
+    ],
     "name": {
       "pos": 15,
       "end": 21,
@@ -76,7 +92,6 @@
       {
         "pos": 22,
         "end": 36,
-        "flags": 0,
         "name": {
           "pos": 22,
           "end": 26,
@@ -112,11 +127,10 @@
             }
           }
         }
-      ],
-      "kind": 186
+      ]
     }
   },
-  "nodeCount": 10,
+  "nodeCount": 12,
   "identifierCount": 3,
   "version": "0",
   "isOpen": false,

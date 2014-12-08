@@ -4,15 +4,16 @@
   "flags": 0,
   "filename": "tmp.ts",
   "text": "class Sample {\n\tprivate _name: string;\n\tget name(): string {\n\t\treturn this._name;\n\t}\n\tset name(name: string) {\n\t\tthis._name = name;\n\t}\n}\n",
-  "syntacticErrors": [],
-  "semanticErrors": [],
+  "referenceDiagnostics": [],
+  "parseDiagnostics": [],
+  "grammarDiagnostics": [],
+  "semanticDiagnostics": [],
   "referencedFiles": [],
   "amdDependencies": [],
   "statements": [
     {
       "pos": 0,
       "end": 136,
-      "flags": 0,
       "name": {
         "pos": 5,
         "end": 12,
@@ -23,6 +24,12 @@
           "pos": 14,
           "end": 38,
           "flags": 32,
+          "modifiers": [
+            {
+              "pos": 14,
+              "end": 23
+            }
+          ],
           "name": {
             "pos": 23,
             "end": 29,
@@ -36,7 +43,6 @@
         {
           "pos": 38,
           "end": 84,
-          "flags": 0,
           "name": {
             "pos": 43,
             "end": 48,
@@ -57,25 +63,23 @@
                 "expression": {
                   "pos": 69,
                   "end": 80,
-                  "left": {
+                  "expression": {
                     "pos": 69,
                     "end": 74
                   },
-                  "right": {
+                  "name": {
                     "pos": 75,
                     "end": 80,
                     "text": "_name"
                   }
                 }
               }
-            ],
-            "kind": 186
+            ]
           }
         },
         {
           "pos": 84,
           "end": 134,
-          "flags": 0,
           "name": {
             "pos": 89,
             "end": 94,
@@ -85,7 +89,6 @@
             {
               "pos": 95,
               "end": 107,
-              "flags": 0,
               "name": {
                 "pos": 95,
                 "end": 99,
@@ -110,11 +113,11 @@
                   "left": {
                     "pos": 110,
                     "end": 123,
-                    "left": {
+                    "expression": {
                       "pos": 110,
                       "end": 117
                     },
-                    "right": {
+                    "name": {
                       "pos": 118,
                       "end": 123,
                       "text": "_name"
@@ -128,14 +131,17 @@
                   }
                 }
               }
-            ],
-            "kind": 186
+            ]
           }
         }
       ]
     }
   ],
-  "nodeCount": 25,
+  "endOfFileToken": {
+    "pos": 136,
+    "end": 137
+  },
+  "nodeCount": 27,
   "identifierCount": 8,
   "version": "0",
   "isOpen": false,

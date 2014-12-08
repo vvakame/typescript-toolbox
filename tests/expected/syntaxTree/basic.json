@@ -4,15 +4,16 @@
   "flags": 0,
   "filename": "tmp.ts",
   "text": "class Sample{\ntest(word=\"world\"){return \"Hello,\"+word;}\n}\n\nvar s=new Sample();\ns.test(\"TypeScript\");\n",
-  "syntacticErrors": [],
-  "semanticErrors": [],
+  "referenceDiagnostics": [],
+  "parseDiagnostics": [],
+  "grammarDiagnostics": [],
+  "semanticDiagnostics": [],
   "referencedFiles": [],
   "amdDependencies": [],
   "statements": [
     {
       "pos": 0,
       "end": 57,
-      "flags": 0,
       "name": {
         "pos": 5,
         "end": 12,
@@ -22,7 +23,6 @@
         {
           "pos": 13,
           "end": 55,
-          "flags": 0,
           "name": {
             "pos": 13,
             "end": 18,
@@ -32,7 +32,6 @@
             {
               "pos": 19,
               "end": 31,
-              "flags": 0,
               "name": {
                 "pos": 19,
                 "end": 23,
@@ -68,8 +67,7 @@
                   }
                 }
               }
-            ],
-            "kind": 186
+            ]
           }
         }
       ]
@@ -81,7 +79,6 @@
         {
           "pos": 62,
           "end": 77,
-          "flags": 0,
           "name": {
             "pos": 62,
             "end": 64,
@@ -90,13 +87,14 @@
           "initializer": {
             "pos": 65,
             "end": 77,
-            "func": {
+            "expression": {
               "pos": 68,
               "end": 75,
               "text": "Sample"
             },
             "arguments": []
-          }
+          },
+          "flags": 0
         }
       ]
     },
@@ -106,15 +104,15 @@
       "expression": {
         "pos": 78,
         "end": 99,
-        "func": {
+        "expression": {
           "pos": 78,
           "end": 85,
-          "left": {
+          "expression": {
             "pos": 78,
             "end": 80,
             "text": "s"
           },
-          "right": {
+          "name": {
             "pos": 81,
             "end": 85,
             "text": "test"
@@ -130,7 +128,11 @@
       }
     }
   ],
-  "nodeCount": 23,
+  "endOfFileToken": {
+    "pos": 100,
+    "end": 101
+  },
+  "nodeCount": 24,
   "identifierCount": 8,
   "version": "0",
   "isOpen": false,

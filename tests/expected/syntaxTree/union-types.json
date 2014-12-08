@@ -4,8 +4,10 @@
   "flags": 0,
   "filename": "tmp.ts",
   "text": "var test:string|boolean |number;\n",
-  "syntacticErrors": [],
-  "semanticErrors": [],
+  "referenceDiagnostics": [],
+  "parseDiagnostics": [],
+  "grammarDiagnostics": [],
+  "semanticDiagnostics": [],
   "referencedFiles": [],
   "amdDependencies": [],
   "statements": [
@@ -16,7 +18,6 @@
         {
           "pos": 3,
           "end": 31,
-          "flags": 0,
           "name": {
             "pos": 3,
             "end": 8,
@@ -39,12 +40,17 @@
                 "end": 31
               }
             ]
-          }
+          },
+          "flags": 0
         }
       ]
     }
   ],
-  "nodeCount": 7,
+  "endOfFileToken": {
+    "pos": 32,
+    "end": 33
+  },
+  "nodeCount": 8,
   "identifierCount": 1,
   "version": "0",
   "isOpen": false,

@@ -2,7 +2,7 @@ declare var require: Function;
 
 var fs = require("fs");
 
-import ts = require("../typescript/ts");
+import ts = require("../lib/ts");
 
 export function readSettingJson(fileName:string):any {
 	"use strict";

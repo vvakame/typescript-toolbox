@@ -4,15 +4,16 @@
   "flags": 0,
   "filename": "tmp.ts",
   "text": "class Sample {\n\ttest(word = \"world\") {\n\t\treturn \"Hello,\" + word;\n\t}\n\n\t// duplicated!\n\ttest(word = \"world\") {\n\t\treturn \"Hello,\" + word;\n\t}\n}\n",
-  "syntacticErrors": [],
-  "semanticErrors": [],
+  "referenceDiagnostics": [],
+  "parseDiagnostics": [],
+  "grammarDiagnostics": [],
+  "semanticDiagnostics": [],
   "referencedFiles": [],
   "amdDependencies": [],
   "statements": [
     {
       "pos": 0,
       "end": 139,
-      "flags": 0,
       "name": {
         "pos": 5,
         "end": 12,
@@ -22,7 +23,6 @@
         {
           "pos": 14,
           "end": 67,
-          "flags": 0,
           "name": {
             "pos": 14,
             "end": 20,
@@ -32,7 +32,6 @@
             {
               "pos": 21,
               "end": 35,
-              "flags": 0,
               "name": {
                 "pos": 21,
                 "end": 25,
@@ -68,14 +67,12 @@
                   }
                 }
               }
-            ],
-            "kind": 186
+            ]
           }
         },
         {
           "pos": 67,
           "end": 137,
-          "flags": 0,
           "name": {
             "pos": 67,
             "end": 90,
@@ -85,7 +82,6 @@
             {
               "pos": 91,
               "end": 105,
-              "flags": 0,
               "name": {
                 "pos": 91,
                 "end": 95,
@@ -121,14 +117,17 @@
                   }
                 }
               }
-            ],
-            "kind": 186
+            ]
           }
         }
       ]
     }
   ],
-  "nodeCount": 22,
+  "endOfFileToken": {
+    "pos": 139,
+    "end": 140
+  },
+  "nodeCount": 23,
   "identifierCount": 7,
   "version": "0",
   "isOpen": false,

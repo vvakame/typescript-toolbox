@@ -1,6 +1,6 @@
 "use strict";
 
-import ts = require("../typescript/ts");
+import ts = require("./ts");
 
 export function getSourceFileByContent(content:string):ts.SourceFile {
 	"use strict";
